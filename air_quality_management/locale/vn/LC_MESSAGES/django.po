@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-11 14:56+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\air_quality_management\settings.py:121
+msgid "English"
+msgstr ""
+
+#: .\air_quality_management\settings.py:122
+msgid "Vietnamese"
+msgstr ""
+
+#: .\myapp\forms.py:9
+msgid "Username"
+msgstr ""
+
+#: .\myapp\forms.py:10
+msgid "Email"
+msgstr ""
+
+#: .\myapp\forms.py:11
+msgid "Password"
+msgstr ""
+
+#: .\myapp\forms.py:12
+msgid "Re-enter password"
+msgstr ""
+
+#: .\myapp\forms.py:25
+msgid "Invalid password"
+msgstr ""
+
+#: .\myapp\forms.py:30
+msgid "Username has invalid characters"
+msgstr ""
+
+#: .\myapp\forms.py:35
+msgid "Account has already existed"
+msgstr ""
+
+#: .\myapp\templates\pages\login.html:8
+msgid "Login"
+msgstr ""
+
+#: .\myapp\templates\pages\login.html:16
+msgid "Username:"
+msgstr ""
+
+#: .\myapp\templates\pages\login.html:17
+msgid "Password:"
+msgstr ""

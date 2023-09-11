@@ -1,29 +1,35 @@
-{% extends "base.html" %}
-
-{% block title %}{% trans "User Login" %}{% endblock %}
+{% extends 'base_login_register.html' %}
+{% load i18n %}
+{% load static %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">{% trans "User Login" %}</div>
-                <div class="card-body">
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="username">{% trans "Username" %}:</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">{% trans "Password" %}:</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
-                    </form>
-                </div>
-            </div>
+<div class="center">
+    <div class="container">
+        <div class="text">
+            {% trans "User Login" %}
         </div>
+        <form action="#" method="POST" novalidate>
+            {% csrf_token %}
+            <div class="data">
+                <label for="username">{% trans "Username" %}</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="data">
+                <label for="password">{% trans "Password" %}</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="forgot-pass">
+                <a href="#">{% trans "Forgot password" %}</a>
+            </div>
+            <div class="btn">
+                <div class="inner"></div>
+                <button type="submit">{% trans "Login" %}</button>
+            </div>
+            <div class="signup-link">
+                {% trans "Don't have an account? " %} <a href="#">{% trans "Sign up"%}</a>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
+
