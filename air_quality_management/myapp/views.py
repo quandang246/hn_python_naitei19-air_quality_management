@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import AirQualityData, Location, Pollutant, Sensor
 from django.shortcuts import render
+
 from django.views import View
 
 def homepage(request):
