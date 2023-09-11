@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Homepage - Air Quality Data" %}{% endblock %}
+
+{% block content %}
+    <header>
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>{% trans "Air Quality Data for Cities" %}</h1>
+            <div>
+                <!-- Move the login and register buttons to the right -->
+                <button class="ml-2"><a href="{% url 'login' %}">{% trans "Login" %}</a></button>
+                <button class="ml-2"><a href="{% url 'register' %}">{% trans "Register" %}</a></button>
+            </div>
+        </div>
+    </header>
+    <!-- Example content -->
+    <h2>{% trans "Welcome to the Air Quality Data Homepage!" %}</h2>
+    <p>{% trans "Explore air quality data for various cities below:" %}</p>
+
+    <!-- You can include the table and other content specific to the homepage here -->
+    <table>
+        <thead>
+            <tr>
+                <th>{% trans "Location" %}</th>
+                <th>{% trans "Air Quality Index" %}</th>
+                <th>{% trans "Timestamp" %}</th>
+                <th>{% trans "Main Pollutant" %}</th>
+                <th>{% trans "Pollution Level" %}</th>
+                <th>{% trans "Details" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Replace the dummy data below with actual data from your Django views -->
+            <tr>
+                <td>{% trans "City 1" %}</td>
+                <td>100</td>
+                <td>2023-09-08 12:00 PM</td>
+                <td>{% trans "PM2.5" %}</td>
+                <td>{% trans "Moderate" %}</td>
+                <td><a href="{% url 'city_details' %}">{% trans "View Details" %}</a></td>
+            </tr>
+            <tr>
+                <td>{% trans "City 2" %}</td>
+                <td>75</td>
+                <td>2023-09-08 1:00 PM</td>
+                <td>{% trans "PM10" %}</td>
+                <td>{% trans "Good" %}</td>
+                <td><a href="{% url 'city_details' %}">{% trans "View Details" %}</a></td>
+            </tr>
+            <!-- Add more rows for other cities -->
+        </tbody>
+    </table>
+{% endblock %}

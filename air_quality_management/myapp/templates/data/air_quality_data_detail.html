@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}View Report{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<header>
+    <h1>View Report</h1>
+</header>
+
+<!-- Report Details -->
+<div class="container mt-4">
+    <h2>Report Details</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Location</h3>
+            <p>City: <strong>City Name</strong></p>
+            <!-- Replace "City Name" with the actual location data -->
+
+            <h3>Air Quality Index</h3>
+            <p><strong>100</strong></p>
+
+            <!-- Add more report details as needed -->
+        </div>
+        <div class="col-md-6">
+            <h3>Pollutant Data</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Pollutant</th>
+                        <th>Value (µg/m³)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PM2.5</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>PM10</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>SO2</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>O3</td>
+                        <td>10</td>
+                    </tr>
+                    <!-- Add more pollutant data rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Report Button -->
+<div class="container mt-4">
+    <form action="{% url 'delete_report' report_id %}" method="POST">
+        <button type="submit" class="btn btn-danger">Delete Report</button>
+    </form>
+</div>
+
+<!-- Back Button -->
+<div class="container mt-4">
+    <a href="{% url 'report_list' %}" class="btn btn-primary">Back to Report List</a>
+</div>
+    
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{% trans "City Details" %}{% endblock %}
+
+{% block content %}
+    <!-- City-specific content goes here -->
+
+    <!-- City Information -->
+    <div class="container mt-4">
+        <h2>{% trans "City Name:" %} {% trans "City 1" %}</h2>
+        <p><strong>{% trans "Location:" %}</strong> {% trans "City 1" %}</p>
+        <p><strong>{% trans "Air Quality Index (AQI):" %}</strong> 100</p>
+        <p><strong>{% trans "Timestamp:" %}</strong> 2023-09-08 12:00 PM</p>
+        <p><strong>{% trans "Main Pollutant:" %}</strong> PM2.5</p>
+        <p><strong>{% trans "Pollution Level:" %}</strong> {% trans "Moderate" %}</p>
+    </div>
+
+    <!-- Pollutant Data Table -->
+    <div class="container mt-4">
+        <h2>{% trans "Pollutant Data" %}</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{% trans "Pollutant" %}</th>
+                    <th>{% trans "Value" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PM2.5</td>
+                    <td>20 µg/m³</td>
+                </tr>
+                <tr>
+                    <td>PM10</td>
+                    <td>30 µg/m³</td>
+                </tr>
+                <tr>
+                    <td>SO2</td>
+                    <td>5 µg/m³</td>
+                </tr>
+                <tr>
+                    <td>O3</td>
+                    <td>10 µg/m³</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Button to Provide Information for this City -->
+    <div class="container mt-4">
+        <button><a href="{% url 'report_create' %}">{% trans "Provide Information for City" %}</a></button>
+    </div>
+{% endblock %}
