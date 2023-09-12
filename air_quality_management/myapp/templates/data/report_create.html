@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{% trans "Create New Report" %}{% endblock %}
+
+{% block content %}
+<header>
+    <h1>{% trans "Provide Information for City" %}</h1>
+</header>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">{% trans "Create New Report" %}</div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="location">{% trans "Location" %}:</label>
+                            <input type="text" class="form-control" id="location" name="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="aqi">{% trans "Air Quality Index (AQI)" %}:</label>
+                            <input type="number" class="form-control" id="aqi" name="aqi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pm25">{% trans "PM2.5" %}:</label>
+                            <input type="number" class="form-control" id="pm25" name="pm25" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pm10">{% trans "PM10" %}:</label>
+                            <input type="number" class="form-control" id="pm10" name="pm10" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="so2">{% trans "SO2" %}:</label>
+                            <input type="number" class="form-control" id="so2" name="so2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="o3">{% trans "O3" %}:</label>
+                            <input type="number" class="form-control" id="o3" name="o3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="timestamp">{% trans "Timestamp" %}:</label>
+                            <input type="datetime-local" class="form-control" id="timestamp" name="timestamp" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">{% trans "Save Report" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 3px solid #112D4E;
+    text-align: center;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #DBE2EF;
+}
+thead {
+    background-color: #DBE2EF;
+    color: #112D4E;
+}
+header {
+    color: white;
+    background: #112D4E;
+}
+
+button {
+    border: none;
+    color: black;
+    padding: 5px 20px 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #DBE2EF;
+}
+
+a {
+    color: #3F72AF;
+}
+
+body {
+    background: #F9F7F7;
+}
+
+input {
+    border: solid;
+    color: black;
+    padding: 5px 20px 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #F9F7F7;
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #112D4E; /* Customize the background color */
+    color: #fff; /* Customize the text color */
+    padding: 10px 0; /* Adjust padding as needed */
+}

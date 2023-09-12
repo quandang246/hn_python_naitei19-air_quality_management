@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{% trans "Edit Report" %}{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<header>
+    <h1>{% trans "Edit Report" %}</h1>
+</header>
+
+<!-- Edit Form -->
+<div class="container mt-4">
+    <form action="{% url 'update_report' report_id %}" method="POST">
+        {% csrf_token %}
+        <h2>{% trans "Edit Report" %}</h2>
+        <div class="form-group">
+            <label for="location">{% trans "Location" %}</label>
+            <input type="text" class="form-control" id="location" name="location" value="{% trans "City Name" %}">
+            <!-- Replace "{% trans "City Name" %}" with the actual location data -->
+        </div>
+
+        <div class="form-group">
+            <label for="aqi">{% trans "Air Quality Index" %}</label>
+            <input type="number" class="form-control" id="aqi" name="aqi" value="100">
+            <!-- Replace "100" with the actual AQI data -->
+        </div>
+
+        <!-- Edit Pollutant Data Fields -->
+        <div class="form-group">
+            <label for="pm25">{% trans "PM2.5 (µg/m³)" %}</label>
+            <input type="number" class="form-control" id="pm25" name="pm25" value="20">
+        </div>
+        <div class="form-group">
+            <label for="pm10">{% trans "PM10 (µg/m³)" %}</label>
+            <input type="number" class="form-control" id="pm10" name="pm10" value="30">
+        </div>
+        <div class="form-group">
+            <label for="so2">{% trans "SO2 (µg/m³)" %}</label>
+            <input type="number" class="form-control" id="so2" name="so2" value="5">
+        </div>
+        <div class="form-group">
+            <label for="o3">{% trans "O3 (µg/m³)" %}</label>
+            <input type="number" class="form-control" id="o3" name="o3" value="10">
+        </div>
+        <!-- End of Edit Pollutant Data Fields -->
+
+        <!-- Add more form fields for editing other report details as needed -->
+
+        <button type="submit" class="btn btn-primary">{% trans "Save Changes" %}</button>
+    </form>
+</div>
+{% endblock %}

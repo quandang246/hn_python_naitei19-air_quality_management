@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{% trans "Report List" %}{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<header>
+    <h1>{% trans "Report List" %}</h1>
+</header>
+
+<!-- Report List Table -->
+<div class="container mt-4">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "Location" %}</th>
+                <th>{% trans "Air Quality Index" %}</th>
+                <th>{% trans "Timestamp" %}</th>
+                <th>{% trans "Main Pollutant" %}</th>
+                <th>{% trans "Actions" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Replace the dummy data below with actual data from your Django views -->
+            <!-- Add more rows for other reports -->
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
