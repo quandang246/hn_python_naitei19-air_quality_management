@@ -1,6 +1,7 @@
 from django.db import models
 import uuid  # Required for unique book instances.
 from django.urls import reverse  # Used to generate URLs by reversing the URL patterns.
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -49,3 +50,9 @@ class Sensor(models.Model):
 
     def __str__(self):
         return self.name
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
