@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/style_login_register.css' %}">
+        <link rel="stylesheet"
+              href="{% static 'css/cdnjs.cloudflare.com_ajax_libs_font-awesome_5.15.3_css_all.min.css' %}">
+    </head>
+    <body>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>
+
