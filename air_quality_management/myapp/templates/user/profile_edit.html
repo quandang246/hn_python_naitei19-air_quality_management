@@ -1,0 +1,49 @@
+{% extends 'base_profile.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans "Edit Profile" %} {% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header justify-content-center">
+                    <h3 class="font-weight-light my-2 text-center">{% trans "Edit Profile" %}</h3>
+                </div>
+                <form method="post" enctype="multipart/form-data" class="card-body">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="form-group" style="display: flex; justify-content: center;">
+                            <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Change Avatar:" %}</label>
+                                {{ profile_form.avatar }}
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="name">{% trans "Name:" %}</label>
+                                    {{ user_form.username }}
+                                <label for="email">Email:</label>
+                                    {{ user_form.email }}
+                            </div>
+                            <div class="form-group">
+                                <a href="{% url 'password_change' %}">{% trans "Change Password" %}</a>
+                                <br>
+                                <label>{% trans "Bio:" %}</label> 
+                                    {{ profile_form.bio }}
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">{% trans "Save Changes" %}</button>
+                            <button type="reset" class="btn btn-primary">{% trans "Reset" %}</button>
+                            <a href="{% url 'users-profile' %}" class="btn btn-primary">{% trans "Back" %}</a>                                
+                        </div>
+                    </div>                   
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

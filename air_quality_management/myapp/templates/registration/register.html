@@ -24,7 +24,7 @@
             <button type="submit">{% trans "Sign up" %}</button>
         </div>
         <div class="signup-link">
-            {% trans "Already have an account? "%} <a href="#">{% trans "Login now" %}</a>
+            {% trans "Already have an account? "%} <a href="{% url 'login' %}">{% trans "Login now" %}</a>
         </div>
     </form>
 </div>

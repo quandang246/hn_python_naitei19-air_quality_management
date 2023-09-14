@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import AirQualityData, Location, Pollutant, Sensor
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .forms import UpdateUserForm
+from .forms import UpdateUserForm, UpdateProfileForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
@@ -130,15 +130,18 @@ def profile(request):
 def edit_profile(request):
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
-        if user_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
-            messages.success(request, _('Your profile is updated successfully'))
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
             return redirect(to='users-profile')
     else:
         user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
 
-    return render(request, 'user/profile_edit.html', {'user_form': user_form})
+    return render(request, 'user/profile_edit.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
