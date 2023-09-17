@@ -14,7 +14,7 @@ from django.views import View
 from .forms import LoginForm, RegisterForm
 
 
-def homepage(request):
+def index(request):
     """
     View for the homepage.
     """
@@ -25,7 +25,14 @@ def homepage(request):
     context = {
         'data': dummy_data,
     }
-    return render(request, 'homepage.html', context)
+    return render(request, 'index.html', context)
+
+def homepage(request):
+    """
+    View for the homepage.
+    """
+    data = AirQualityData.objects.all()
+    return render(request, 'homepage.html', {'data': data})
 
 
 def login_view(request):
@@ -43,7 +50,7 @@ def login_view(request):
             if user:
                 login(request, user)
                 messages.success(request, f'Welcome back!')
-                return HttpResponseRedirect('/')
+                return redirect('homepage')
 
         messages.error(request, _('Invalid username or password'))
         return render(request, 'registration/login.html', {'form': form})
@@ -52,7 +59,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, _("You've been logged out."))
-    return HttpResponseRedirect('login')
+    return redirect('index')
 
 
 def register_view(request):
@@ -67,8 +74,7 @@ def register_view(request):
             user.username = user.username.lower()
             user.save()
             messages.success(request, _('You have signed up successfully'))
-            login(request, user)
-            return HttpResponseRedirect('/')
+            return redirect('login')
         else:
             return render(request, 'registration/register.html', {'form': form})
 
@@ -88,12 +94,16 @@ def user_view(request):
 class city_details(View):
     template_name = 'city_details.html'
 
-    def get(self, request, *args, **kwargs):
-        # You can fetch data for the city here if needed
-        city_data = {}
+    def get(self, request, location_id, *args, **kwargs):
+        # Retrieve the AirQualityData object based on the location_id
+        air_quality_data = get_object_or_404(AirQualityData, location_id_id=location_id)
+
+        # Retrieve the pollutant data related to the AirQualityData object
+        pollutants = get_object_or_404(Pollutant,  id=location_id)
 
         context = {
-            'city_data': city_data,
+            'air_quality_data': air_quality_data,
+            'pollutants': pollutants,
         }
 
         return render(request, self.template_name, context)
