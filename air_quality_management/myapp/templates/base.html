@@ -1,27 +1,46 @@
-{% load i18n %}
 {% load static %}
-
-
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% trans "GreenAir" %}{% endblock %}</title>
     <link rel="stylesheet"
     href="{% static 'css/cdn.jsdelivr.net_npm_bootstrap@4.5.3_dist_css_bootstrap.min.css' %}"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
     crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles_homepage.css' %}">
-    <title>{% block title %}Test{% endblock %}</title>
-    <!-- Add your CSS stylesheets here if needed -->
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  </head>
+  <body>
+    <head class="header">
+      <div class="d-flex justify-content-between align-items-center">
+        <nav class="navbar">
+          <h2 class="logo"><a href="#">{% trans "GreenAir" %}</a></h2>
+          <input type="checkbox" id="menu-toggle" />
+          <label for="menu-toggle" id="hamburger-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </label>
+          <ul class="links">
+            <li><a href="{% url 'homepage' %}" >{% trans "Home" %}</a></li>
+            <li><a href="#">{% trans "About Us" %}</a></li>
+            <li><a href="#">{% trans "Services" %}</a></li>
+            <li><a href="#">{% trans "Portfolio" %}</a></li>
+            <li><a href="#">{% trans "Contact Us" %}</a></li>
+          </ul>
+          <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="avatar">
+          <div class="buttons">
+              <a href="{% url 'users-profile' %}" class="signup">{% trans "Profile" %}</a>
+              <a href="{% url 'logout' %}" class="signup">{% trans "Logout" %}</a>
+          </div>
+        </nav>
+      </div>
+    </head>
     <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-    {% include 'footer.html' %}
-</body> <!-- Close the body tag -->
+      {% block content %}
+      {% endblock %}
+    </main>      
+  </body>
 </html>

@@ -5,8 +5,9 @@ from .views import profile, edit_profile
 from .views import ChangePasswordView
 
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
-    path('city_details/', views.city_details.as_view(), name='city_details'),
+    path('', views.index, name='index'),
+    path('homepage/', views.homepage, name='homepage'),
+    path('city_details/<int:location_id>/', views.city_details.as_view(), name='city_details'),
     path('air-quality-data/', views.air_quality_data_list, name='air_quality_data_list'),
     path('air-quality-data/<uuid:data_id>/', views.air_quality_data_detail, name='air_quality_data_detail'),
     path('login/', views.login_view, name='login'),
