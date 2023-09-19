@@ -8,11 +8,11 @@
     <!-- City Information -->
     <div class="container-1">
         <div>
-            <h1>{% trans "City Name:" %} {{ air_quality_data.location_id}}</h1>
-            <p><strong>{% trans "Location:" %}</strong> {{ air_quality_data.location_id}}</p>
-            <p><strong>{% trans "Air Quality Index (AQI):" %}</strong> </p>
+            <h1>{% trans "City Name:" %} {{ air_quality_data.city}}</h1>
+            <p><strong>{% trans "Location:" %}</strong> {{ air_quality_data.city}}</p>
+            <p><strong>{% trans "Air Quality Index (AQI):" %}</strong> {{ air_quality_data.air_quality_index}}</p>
             <p><strong>{% trans "Timestamp:" %}</strong> {{ air_quality_data.timestamp}}</p>
-            <p><strong>{% trans "Main Pollutant:" %}</strong> </p>
+            <p><strong>{% trans "Main Pollutant:" %}</strong> {{ air_quality_data.main_pollutant}}</p>
             <p><strong>{% trans "Pollution Level:" %}</strong> {{ air_quality_data.pol_level}}</p>
         </div>
         <div>
@@ -45,7 +45,7 @@
             </table>
         </div>
         <div>
-            <a href="#" class="signup">{% trans "Provide Information for City" %}</a></button>
+            <a href="{% url 'report_air_quality' %}" class="signup">{% trans "Provide Information for City" %}</a></button>
         </div>
     </div>
 {% endblock %}
