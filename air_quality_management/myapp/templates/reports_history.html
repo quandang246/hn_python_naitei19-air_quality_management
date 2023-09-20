@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans "Reports History" %}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style_history.css' %}" />
+<div class="container-1">
+    <h1>{% trans "Your reports" %}</h1>
+    <table>
+        <thead>
+            <tr >
+                <th>{% trans "Timestamp" %}</th>
+                <th>{% trans "Location" %}</th>
+                <th>{% trans "AQI" %}</th>
+                <th>{% trans "Pollution Level" %}</th>
+                <th>{% trans "PM2.5" %}</th>
+                <th>{% trans "PM10" %}</th>
+                <th>{% trans "SO2" %}</th>
+                <th>{% trans "O3" %}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in air_quality_data %}
+                <tr>
+                    <td>{{ entry.timestamp }}</td>
+                    <td>{{ entry.city }}</td>
+                    <td>{{ entry.air_quality_index }}</td>
+                    <td>{{ entry.pol_level }}</td>
+                    <td>{{ entry.pollutant_id.PM2_5 }}</td>
+                    <td>{{ entry.pollutant_id.PM10 }}</td>
+                    <td>{{ entry.pollutant_id.SO2 }}</td>
+                    <td>{{ entry.pollutant_id.O3 }}</td>
+                    <td>
+                        <a href="{#}">{% trans "Edit" %}</a>
+                        /
+                        <a href="{#}">{% trans "Delete" %}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

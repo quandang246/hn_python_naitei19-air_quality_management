@@ -40,32 +40,38 @@
             <!-- Report History -->
             <div class="mt-4">
                 <h2>Report History</h2>
-                <ul class="list-group">
-                    <!-- Replace the dummy data below with actual user's report history -->
-                    <li class="list-group-item">
-                        Report ID: 1
-                        <div class="float-right">
-                            <!--replace "#" with "% url 'view_report' report_id=1 %"-->
-                            <a href="{#}" class="btn btn-info btn-sm">{% trans "View" %}</a>
-                            <!--replace "#" with "% url 'edit_report' report_id=1 %"-->
-                            <a href="{#}" class="btn btn-warning btn-sm">{% trans "Edit" %}</a>
-                            <!--replace "#" with "% url 'delete_report' report_id=1 %"-->
-                            <a href="{#}" class="btn btn-danger btn-sm">{% trans "Delete" %}</a>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        Report ID: 2
-                        <div class="float-right">
-                            <!--replace "#" with "% url 'view_report' report_id=2 %"-->
-                            <a href="{#}" class="btn btn-info btn-sm">{% trans "View" %}</a>
-                            <!--replace "#" with "% url 'edit_report' report_id=2 %"-->
-                            <a href="{#}" class="btn btn-warning btn-sm">{% trans "Edit" %}</a>
-                            <!--replace "#" with "% url 'delete_report' report_id=2 %"-->
-                            <a href="{#}" class="btn btn-danger btn-sm">{% trans "Delete" %}</a>
-                        </div>
-                    </li>
-                    <!-- Add more report history items as needed -->
-                </ul>
+                <div class="form-group">
+                    <a href="{% url 'reports_history' %}" class="btn btn-primary">{% trans "Full history" %}</a>
+                </div>
+                <table class="list-group-item">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Timestamp" %}</th>
+                            <th>{% trans "Location" %}</th>
+                            <th>{% trans "AQI" %}</th>
+                            <th>{% trans "Level" %}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in air_quality_data %}
+                            <tr>
+                                <td>{{ entry.timestamp }}</td>
+                                <td>{{ entry.city }}</td>
+                                <td>{{ entry.air_quality_index }}</td>
+                                <td>{{ entry.pol_level }}</td>
+                                <td>
+                                <!--replace "#" with "% url 'view_report' report_id=1 %"-->
+                                <a href="{#}" class="btn btn-info btn-sm">{% trans "View" %}</a>
+                                <!--replace "#" with "% url 'edit_report' report_id=1 %"-->
+                                <a href="{#}" class="btn btn-warning btn-sm">{% trans "Edit" %}</a>
+                                <!--replace "#" with "% url 'delete_report' report_id=1 %"-->
+                                <a href="{#}" class="btn btn-danger btn-sm">{% trans "Delete" %}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
