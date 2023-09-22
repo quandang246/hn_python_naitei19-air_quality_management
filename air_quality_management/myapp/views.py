@@ -133,7 +133,12 @@ def air_quality_data_detail(request, data_id):
 
 @login_required
 def profile(request):
-    return render(request, 'user/user_profile.html')
+    air_quality_data = AirQualityData.objects.filter(provider=request.user.username)[:2]
+
+    context = {
+        'air_quality_data': air_quality_data,
+    }
+    return render(request, 'user/user_profile.html', context)
 
 
 @login_required
@@ -158,3 +163,12 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'user/change_password.html'
     success_message = _('Successfully Changed Your Password')
     success_url = reverse_lazy('users-profile')
+
+@login_required
+def reports_history(request):
+    air_quality_data = AirQualityData.objects.filter(provider=request.user.username)
+
+    context = {
+        'air_quality_data': air_quality_data,
+    }
+    return render(request, 'reports_history.html', context)
