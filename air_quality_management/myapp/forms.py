@@ -41,10 +41,21 @@ class UpdateUserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email']
 
+
 class UpdateProfileForm(forms.ModelForm):
     avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
     bio = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Profile
-        fields = ['avatar','bio']
+        fields = ['avatar', 'bio']
+
+
+class AirQualityForm_User(forms.Form):
+    location = forms.CharField(label='Location')
+    latitude = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    longitude = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    so2 = forms.FloatField(label='SO2')
+    o3 = forms.FloatField(label='O3')
+    pm2_5 = forms.FloatField(label='PM2.5')
+    pm10 = forms.FloatField(label='PM10')

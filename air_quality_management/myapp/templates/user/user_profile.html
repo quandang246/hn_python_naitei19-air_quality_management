@@ -31,7 +31,7 @@
                     <a href= "{% url 'edit-profile' %}" class="btn btn-primary">{% trans "Edit Profile" %}</a>
                     <!-- Create New Report Button-->
                     <!--replace "#" with "% url 'report_create.html' %"-->
-                    <a href="{#}" class="btn btn-primary">{% trans "Create New Report" %}</a>
+                    <a href="{% url 'report_air_quality' %}" class="btn btn-primary">{% trans "Create New Report" %}</a>
                     <!-- Back To Home Button-->
                     <a href="{% url 'homepage' %}" class="btn btn-primary">{% trans "Home" %}</a>
                 </div>

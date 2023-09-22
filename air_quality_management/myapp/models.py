@@ -1,6 +1,5 @@
 from django.db import models
 import uuid  # Required for unique book instances.
-from django.urls import reverse  # Used to generate URLs by reversing the URL patterns.
 from django.contrib.auth.models import User
 from PIL import Image
 
@@ -12,34 +11,29 @@ class AirQualityData(models.Model):
         default=uuid.uuid4,
         help_text='Unique Id for this data'
     )
-    location_id = models.ForeignKey('Location', on_delete=models.SET_NULL, null=True)
+    city = models.CharField(max_length=200)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
     pollutant_id = models.ForeignKey('Pollutant', on_delete=models.SET_NULL, null=True)
-    air_quality_index = models.DecimalField(max_digits=4, decimal_places=0)
+    air_quality_index = models.DecimalField(max_digits=10, decimal_places=4)
     timestamp = models.DateTimeField(auto_now_add=True)
-    pol_level = models.CharField(max_length=200)
+    pol_level = models.CharField(max_length=200, blank=True)
     provider = models.CharField(max_length=200)
 
     class Meta:
         ordering = ['-timestamp']
 
     def __str__(self):
-        return f"Data ID: {self.data_id}, Location: {self.location_id}, Pollutant: {self.pollutant_id}, AQI: {self.air_quality_index}"
-
-
-class Location(models.Model):
-    name = models.CharField(max_length=200)
-    latitude = models.CharField(max_length=200)
-    longitude = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
+        return f"Data ID: {self.data_id}, City: {self.city}, Latitude: {self.latitude}, Longitude: {self.longitude}, " \
+               f"Pollutant ID: {self.pollutant_id}, AQI: {self.air_quality_index}, Timestamp: {self.timestamp}, " \
+               f"Pollution Level: {self.pol_level}, Provider: {self.provider} "
 
 
 class Pollutant(models.Model):
-    SO2 = models.DecimalField(max_digits=18, decimal_places=0)
-    O3 = models.DecimalField(max_digits=18, decimal_places=0)
-    PM2_5 = models.DecimalField(max_digits=18, decimal_places=0)
-    PM10 = models.DecimalField(max_digits=18, decimal_places=0)
+    SO2 = models.DecimalField(max_digits=18, decimal_places=4)
+    O3 = models.DecimalField(max_digits=18, decimal_places=4)
+    PM2_5 = models.DecimalField(max_digits=18, decimal_places=4)
+    PM10 = models.DecimalField(max_digits=18, decimal_places=4)
 
     def __str__(self):
         return f"Pollutant: SO2={self.SO2}, O3={self.O3}, PM10={self.PM10}"
