@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 14:56+0700\n"
+"POT-Creation-Date: 2023-09-20 19:21+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,35 +25,250 @@ msgstr ""
 msgid "Vietnamese"
 msgstr ""
 
-#: .\myapp\forms.py:9
-msgid "Username"
+#: .\myapp\forms.py:17
+msgid "Enter your username"
 msgstr ""
 
-#: .\myapp\forms.py:10
-msgid "Email"
+#: .\myapp\forms.py:20
+msgid "Enter your email"
 msgstr ""
 
-#: .\myapp\forms.py:11
-msgid "Password"
+#: .\myapp\forms.py:23
+msgid "Create password"
 msgstr ""
 
-#: .\myapp\forms.py:12
-msgid "Re-enter password"
+#: .\myapp\forms.py:26
+msgid "Confirm password"
 msgstr ""
 
-#: .\myapp\forms.py:25
-msgid "Invalid password"
+#: .\myapp\templates\base.html:8 .\myapp\templates\base.html:19
+#: .\myapp\templates\index.html:14
+msgid "GreenAir"
 msgstr ""
 
-#: .\myapp\forms.py:30
-msgid "Username has invalid characters"
+#: .\myapp\templates\base.html:27 .\myapp\templates\index.html:22
+#: .\myapp\templates\user\user_profile.html:36
+msgid "Home"
 msgstr ""
 
-#: .\myapp\forms.py:35
-msgid "Account has already existed"
+#: .\myapp\templates\base.html:28 .\myapp\templates\index.html:23
+msgid "About Us"
+msgstr ""
+
+#: .\myapp\templates\base.html:29 .\myapp\templates\index.html:24
+msgid "Services"
+msgstr ""
+
+#: .\myapp\templates\base.html:30 .\myapp\templates\index.html:25
+msgid "Portfolio"
+msgstr ""
+
+#: .\myapp\templates\base.html:31 .\myapp\templates\index.html:26
+msgid "Contact Us"
+msgstr ""
+
+#: .\myapp\templates\base.html:35 .\myapp\templates\user\user_profile.html:5
+#: .\myapp\templates\user\user_profile.html:12
+msgid "Profile"
+msgstr ""
+
+#: .\myapp\templates\base.html:36
+msgid "Logout"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:3
+msgid "City Details"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:11
+msgid "City Name:"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:12
+msgid "Location:"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:13
+msgid "Air Quality Index (AQI):"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:14
+msgid "Timestamp:"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:15
+msgid "Main Pollutant:"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:16
+msgid "Pollution Level:"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:19
+msgid "Pollutant Data"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:23
+msgid "Pollutant"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:24
+msgid "Value"
+msgstr ""
+
+#: .\myapp\templates\city_details.html:48
+#: .\myapp\templates\data\report_create.html:7
+msgid "Provide Information for City"
+msgstr ""
+
+#: .\myapp\templates\data\air_quality_data_list.html:3
+#: .\myapp\templates\data\air_quality_data_list.html:8
+msgid "Report List"
+msgstr ""
+
+#: .\myapp\templates\data\air_quality_data_list.html:16
+#: .\myapp\templates\data\edit_report.html:17
+#: .\myapp\templates\data\report_create.html:18
+#: .\myapp\templates\homepage.html:14
+msgid "Location"
+msgstr ""
+
+#: .\myapp\templates\data\air_quality_data_list.html:17
+#: .\myapp\templates\data\edit_report.html:23
+#: .\myapp\templates\homepage.html:15
+msgid "Air Quality Index"
+msgstr ""
+
+#: .\myapp\templates\data\air_quality_data_list.html:18
+#: .\myapp\templates\data\report_create.html:42
+#: .\myapp\templates\homepage.html:16
+msgid "Timestamp"
+msgstr ""
+
+#: .\myapp\templates\data\air_quality_data_list.html:19
+#: .\myapp\templates\homepage.html:17
+msgid "Main Pollutant"
+msgstr ""
+
+#: .\myapp\templates\data\air_quality_data_list.html:20
+msgid "Actions"
+msgstr ""
+
+#: .\myapp\templates\data\edit_report.html:3
+#: .\myapp\templates\data\edit_report.html:8
+#: .\myapp\templates\data\edit_report.html:15
+msgid "Edit Report"
+msgstr ""
+
+#: .\myapp\templates\data\edit_report.html:18
+#: .\myapp\templates\data\edit_report.html:19
+msgid "City Name"
+msgstr ""
+
+#: .\myapp\templates\data\edit_report.html:30
+msgid "PM2.5 (µg/m³)"
+msgstr ""
+
+#: .\myapp\templates\data\edit_report.html:34
+msgid "PM10 (µg/m³)"
+msgstr ""
+
+#: .\myapp\templates\data\edit_report.html:38
+msgid "SO2 (µg/m³)"
+msgstr ""
+
+#: .\myapp\templates\data\edit_report.html:42
+msgid "O3 (µg/m³)"
+msgstr ""
+
+#: .\myapp\templates\data\edit_report.html:49
+#: .\myapp\templates\user\profile_edit.html:39
+msgid "Save Changes"
+msgstr ""
+
+#: .\myapp\templates\data\report_create.html:3
+#: .\myapp\templates\data\report_create.html:13
+#: .\myapp\templates\user\user_profile.html:34
+msgid "Create New Report"
+msgstr ""
+
+#: .\myapp\templates\data\report_create.html:22
+msgid "Air Quality Index (AQI)"
+msgstr ""
+
+#: .\myapp\templates\data\report_create.html:26
+msgid "PM2.5"
+msgstr ""
+
+#: .\myapp\templates\data\report_create.html:30
+msgid "PM10"
+msgstr ""
+
+#: .\myapp\templates\data\report_create.html:34
+msgid "SO2"
+msgstr ""
+
+#: .\myapp\templates\data\report_create.html:38
+msgid "O3"
+msgstr ""
+
+#: .\myapp\templates\data\report_create.html:45
+msgid "Save Report"
+msgstr ""
+
+#: .\myapp\templates\homepage.html:5
+msgid "Homepage - Air Quality Data"
+msgstr ""
+
+#: .\myapp\templates\homepage.html:9
+msgid "AIR QUALITY MANAGEMENT FOR CITIES"
+msgstr ""
+
+#: .\myapp\templates\homepage.html:10
+msgid "Search for locations..."
+msgstr ""
+
+#: .\myapp\templates\homepage.html:18
+msgid "Pollution Level"
+msgstr ""
+
+#: .\myapp\templates\homepage.html:19
+msgid "Details"
+msgstr ""
+
+#: .\myapp\templates\homepage.html:30
+msgid "View Details"
+msgstr ""
+
+#: .\myapp\templates\index.html:29
+msgid "Sign In"
+msgstr ""
+
+#: .\myapp\templates\index.html:30
+msgid "Sign Up"
+msgstr ""
+
+#: .\myapp\templates\index.html:36
+msgid "AIR QUALITY MANAGEMENT"
+msgstr ""
+
+#: .\myapp\templates\index.html:38
+msgid ""
+"Join us in the mission to improve air quality and unlock a future of "
+"healthier living. Learn how to manage air quality and make a difference "
+"today!"
+msgstr ""
+
+#: .\myapp\templates\index.html:41
+msgid "Join Now"
+msgstr ""
+
+#: .\myapp\templates\index.html:42
+msgid "Learn More"
 msgstr ""
 
 #: .\myapp\templates\pages\login.html:8
+#: .\myapp\templates\registration\login.html:26
 msgid "Login"
 msgstr ""
 
@@ -63,4 +278,128 @@ msgstr ""
 
 #: .\myapp\templates\pages\login.html:17
 msgid "Password:"
+msgstr ""
+
+#: .\myapp\templates\registration\login.html:9
+msgid "User Login"
+msgstr ""
+
+#: .\myapp\templates\registration\login.html:14
+msgid "Username"
+msgstr ""
+
+#: .\myapp\templates\registration\login.html:18
+msgid "Password"
+msgstr ""
+
+#: .\myapp\templates\registration\login.html:22
+msgid "Forgot password"
+msgstr ""
+
+#: .\myapp\templates\registration\login.html:29
+msgid "Don't have an account? "
+msgstr ""
+
+#: .\myapp\templates\registration\login.html:29
+#: .\myapp\templates\registration\register.html:24
+msgid "Sign up"
+msgstr ""
+
+#: .\myapp\templates\registration\register.html:7
+msgid "Registration"
+msgstr ""
+
+#: .\myapp\templates\registration\register.html:27
+msgid "Already have an account? "
+msgstr ""
+
+#: .\myapp\templates\registration\register.html:27
+msgid "Login now"
+msgstr ""
+
+#: .\myapp\templates\user\change_password.html:5
+#: .\myapp\templates\user\profile_edit.html:32
+msgid "Change Password"
+msgstr ""
+
+#: .\myapp\templates\user\change_password.html:13
+msgid "Change Your Password"
+msgstr ""
+
+#: .\myapp\templates\user\change_password.html:33
+msgid "Old Password"
+msgstr ""
+
+#: .\myapp\templates\user\change_password.html:45
+msgid "New Password"
+msgstr ""
+
+#: .\myapp\templates\user\change_password.html:57
+msgid "New Password Confirmation"
+msgstr ""
+
+#: .\myapp\templates\user\change_password.html:67
+msgid "Update Password"
+msgstr ""
+
+#: .\myapp\templates\user\change_password.html:70
+msgid "Cancel"
+msgstr ""
+
+#: .\myapp\templates\user\profile_edit.html:5
+#: .\myapp\templates\user\profile_edit.html:12
+#: .\myapp\templates\user\user_profile.html:31
+msgid "Edit Profile"
+msgstr ""
+
+#: .\myapp\templates\user\profile_edit.html:21
+msgid "Change Avatar:"
+msgstr ""
+
+#: .\myapp\templates\user\profile_edit.html:26
+#: .\myapp\templates\user\user_profile.html:23
+msgid "Name:"
+msgstr ""
+
+#: .\myapp\templates\user\profile_edit.html:34
+msgid "Bio:"
+msgstr ""
+
+#: .\myapp\templates\user\profile_edit.html:40
+msgid "Reset"
+msgstr ""
+
+#: .\myapp\templates\user\profile_edit.html:41
+msgid "Back"
+msgstr ""
+
+#: .\myapp\templates\user\user_profile.html:49
+#: .\myapp\templates\user\user_profile.html:60
+msgid "View"
+msgstr ""
+
+#: .\myapp\templates\user\user_profile.html:51
+#: .\myapp\templates\user\user_profile.html:62
+msgid "Edit"
+msgstr ""
+
+#: .\myapp\templates\user\user_profile.html:53
+#: .\myapp\templates\user\user_profile.html:64
+msgid "Delete"
+msgstr ""
+
+#: .\myapp\views.py:55
+msgid "Invalid username or password"
+msgstr ""
+
+#: .\myapp\views.py:61
+msgid "You've been logged out."
+msgstr ""
+
+#: .\myapp\views.py:76
+msgid "You have signed up successfully"
+msgstr ""
+
+#: .\myapp\views.py:159
+msgid "Successfully Changed Your Password"
 msgstr ""
