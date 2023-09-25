@@ -15,6 +15,7 @@ class AirQualityData(models.Model):
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
     pollutant_id = models.ForeignKey('Pollutant', on_delete=models.SET_NULL, null=True)
+    main_pollutant = models.CharField(max_length=10)
     air_quality_index = models.DecimalField(max_digits=10, decimal_places=4)
     timestamp = models.DateTimeField(auto_now_add=True)
     pol_level = models.CharField(max_length=200, blank=True)

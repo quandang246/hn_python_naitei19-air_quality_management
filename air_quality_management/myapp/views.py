@@ -98,12 +98,12 @@ def user_view(request):
 class city_details(View):
     template_name = 'city_details.html'
 
-    def get(self, request, location_id, *args, **kwargs):
+    def get(self, request, pollutant_id, *args, **kwargs):
         # Retrieve the AirQualityData object based on the location_id
-        air_quality_data = get_object_or_404(AirQualityData, location_id_id=location_id)
+        air_quality_data = get_object_or_404(AirQualityData, pollutant_id_id=pollutant_id)
 
         # Retrieve the pollutant data related to the AirQualityData object
-        pollutants = get_object_or_404(Pollutant, id=location_id)
+        pollutants = get_object_or_404(Pollutant, id=pollutant_id)
 
         context = {
             'air_quality_data': air_quality_data,
@@ -225,14 +225,17 @@ def report_air_quality(request):
                 o3_aqi = o3 * 100 / O3STANDARD  # Input for 8h period - Standard 0.065pmm
                 pm2_5_aqi = pm2_5 * 100 / PM2_5STANDARD  # Input for 24h period - Standard 25ug/m3
                 pm10_aqi = pm10 * 100 / PM10STANDARD  # Input for 24h period - Standard 50ug/m3
+                main_pol = {so2_aqi: "SO2", o3_aqi: "O3", pm2_5_aqi: "PM2.5", pm10_aqi: "PM10"}
                 air_quality_index = max(so2_aqi, o3_aqi, pm2_5_aqi, pm10_aqi)
 
                 # Get username
                 aqi_data = AirQualityData(city=city, latitude=latitude, longitude=longitude,
-                                          pollutant_id=pol_id, air_quality_index=air_quality_index,
+                                          pollutant_id=pol_id, main_pollutant=main_pol.get(max(main_pol)),
+                                          air_quality_index=air_quality_index,
                                           timestamp=datetime.now(), pol_level=_pollution_level(air_quality_index),
                                           provider=request.user.username)
                 aqi_data.save()
+                return redirect('homepage')
     else:
         form = AirQualityForm_User()
 

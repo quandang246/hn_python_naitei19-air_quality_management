@@ -22,12 +22,12 @@
             <tbody>
                 {% for entry in data %}
                     <tr>
-                        <td>{{ entry.location_id }}</td>
+                        <td>{{ entry.city }}</td>
                         <td>{{ entry.air_quality_index }}</td>
                         <td>{{ entry.timestamp }}</td>
-                        <td></td>
+                        <td>{{ entry.main_pollutant }}</td>
                         <td>{{ entry.pol_level }}</td>
-                        <td><a href="{% url 'city_details' location_id=entry.location_id.id %}">{% trans "View Details" %}</a></td>
+                        <td><a href="{% url 'city_details' pollutant_id=entry.pollutant_id.id %}">{% trans "View Details" %}</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
