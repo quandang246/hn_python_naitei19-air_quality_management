@@ -20,24 +20,24 @@
             </div>
             <div class="right-side">
                 <div class="topic-text">{% trans "Input the AQI data from your location" %}</div>
+                <label for="so2">SO2</label>
                 <div class="input-box">
-                    <label for="so2">SO2</label>
                     {{form.so2}}
                 </div>
+                <label for="o3">O3</label>
                 <div class="input-box">
-                    <label for="o3">O3</label>
                     {{form.o3}}
                 </div>
+                <label for="pm2_5">PM2.5</label>
                 <div class="input-box">
-                    <label for="pm2_5">PM2.5</label>
                     {{form.pm2_5}}
                 </div>
+                <label for="pm10">PM10</label>
                 <div class="input-box">
-                    <label for="pm10">PM10</label>
                     {{form.pm10}}
                 </div>
                 <div class="btn">
-                    <input type="button" value="Submit" >
+                    <input type="submit" value="Submit" >
                 </div>
             </div>
         </div>

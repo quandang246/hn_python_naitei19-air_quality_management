@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 
 air_quality_management/media/profile_images/*.jpg
+air_quality_management/myapp/templates/.idea
