@@ -49,9 +49,9 @@ class UpdateProfileForm(forms.ModelForm):
 
 
 class AirQualityForm_User(forms.Form):
-    location = forms.CharField(label='Location')
-    latitude = forms.FloatField(widget=forms.HiddenInput(), required=False)
-    longitude = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    location = forms.CharField(label='Location', widget=forms.HiddenInput(), required=False)
+    latitude = forms.FloatField(label='Latitude', widget=forms.HiddenInput(), required=False)
+    longitude = forms.FloatField(label='Longitude', widget=forms.HiddenInput(), required=False)
     so2 = forms.FloatField(label='SO2')
     o3 = forms.FloatField(label='O3')
     pm2_5 = forms.FloatField(label='PM2.5')
