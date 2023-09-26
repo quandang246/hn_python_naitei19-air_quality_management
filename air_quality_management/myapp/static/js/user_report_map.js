@@ -3,7 +3,7 @@ var map = L.map('map').setView([21.024, 105.85], 13);
 
 // Add a tile layer to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
+    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 // Add a marker and update the hidden input fields when the user clicks on the map
@@ -38,5 +38,7 @@ map.on('click', function(e) {
     if (marker) {
         map.removeLayer(marker);
     }
-    marker = L.marker(e.latlng).addTo(map);
+    marker = L.marker(e.latlng).addTo(map)
+        .bindPopup('This is your chosen location.<br> LMAO')
+        .openPopup();
 });
