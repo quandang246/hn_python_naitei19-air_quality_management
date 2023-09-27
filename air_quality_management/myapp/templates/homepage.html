@@ -5,10 +5,14 @@
 {% block title %}{% trans "Homepage - Air Quality Data" %}{% endblock %}
 
 {% block content %}
+    <!-- Chart place -->
+    <div id="myChart" style="max-width: 700px; height: 400px; margin: 0 auto;"></div>
+
+    <!-- Table place -->
     <div class="container-1">
         <h1 style="color: white; padding: 0 0 20px 0;">{% trans "AIR QUALITY MANAGEMENT FOR CITIES" %}</h1>
         <input type="text" id="searchInput" placeholder="{% trans 'Search for locations...' %}">
-        <table>
+        <table id="dataTable">
             <thead>
                 <tr >
                     <th>{% trans "Location" %}</th>
@@ -35,4 +39,5 @@
     </div>
     <script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
+    <script src="{% static 'js/chart.js' %}"></script>      
 {% endblock %}
