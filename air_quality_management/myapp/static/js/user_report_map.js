@@ -1,5 +1,5 @@
 // Initialize the map
-var map = L.map('map').setView([21.024, 105.85], 13);
+var map = L.map('map').setView([21.005315, 105.843036], 17);
 
 // Add a tile layer to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -8,12 +8,20 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Add a marker and update the hidden input fields when the user clicks on the map
 var marker;
+var city;
+var fulladdr;
 map.on('click', function(e) {
+    var locationField = document.getElementById('location')
     var latitudeField = document.getElementById('latitude');
     var longitudeField = document.getElementById('longitude');
 
     if (!latitudeField || !longitudeField) {
         // Create the hidden input fields if they don't exist
+        locationField = document.createElement('input');
+        locationField.type = 'hidden';
+        locationField.id = 'location';
+        locationField.name = 'location';
+
         latitudeField = document.createElement('input');
         latitudeField.type = 'hidden';
         latitudeField.id = 'latitude';
@@ -26,19 +34,27 @@ map.on('click', function(e) {
 
         // Append the fields to the form
         var form = document.getElementById('report-form');
+        form.appendChild(locationField);
         form.appendChild(latitudeField);
         form.appendChild(longitudeField);
     }
-
-    // Update the hidden input fields with the latitude and longitude values
-    latitudeField.value = e.latlng.lat;
-    longitudeField.value = e.latlng.lng;
 
     // Remove any existing marker and add a new one at the clicked location
     if (marker) {
         map.removeLayer(marker);
     }
-    marker = L.marker(e.latlng).addTo(map)
-        .bindPopup('This is your chosen location.<br> LMAO')
-        .openPopup();
+
+    fetch(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&langCode=EN&location=${e.latlng.lng},${e.latlng.lat}`)
+        .then(res => res.json())
+        .then(myJson => {
+            city = myJson.address.City;
+            fulladdr = myJson.address.LongLabel;
+            locationField.value = city;
+            latitudeField.value = e.latlng.lat;
+            longitudeField.value = e.latlng.lng;
+            var popupContent = "<b>This is your chosen address:<br></b>" + fulladdr;
+            var popup = L.popup().setContent(popupContent);
+            marker = L.marker(e.latlng).addTo(map).bindPopup(popup).openPopup();
+            console.log(myJson.address);
+        });
 });

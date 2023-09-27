@@ -1,18 +1,47 @@
-{% extends 'base_profile.html' %}
+{% extends 'base_user_form.html' %}
 {% load i18n %}
 {% load static %}
 
 
 {% block title%}{% trans "User AQI Report" %}{% endblock title %}
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" id="latitude" name="latitude" required>
-    <input type="hidden" id="longitude" name="longitude" required>
-    <div id="map" style="height: 600px; width: 600px;"></div>
-    <script src="{% static 'js/cdn.jsdelivr.net_npm_leaflet@1.7.1_dist_leaflet.js' %}"></script>
-    <script src="{% static 'js/user_report_map.js' %}"></script>
-    <button type="submit">{% trans "Submit" %}</button>
-</form>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="content">
+            <div class="left-side">
+                <div id="map" style="height: 400px; width: 100%"></div>
+                <input type="hidden" id="location" name="location" required>
+                <input type="hidden" id="latitude" name="latitude" required>
+                <input type="hidden" id="longitude" name="longitude" required>
+                <script src="{% static 'js/cdn.jsdelivr.net_npm_leaflet@1.7.1_dist_leaflet.js' %}"></script>
+                <script src="{% static 'js/user_report_map.js' %}"></script>
+            </div>
+            <div class="right-side">
+                <div class="topic-text">{% trans "Input the AQI data from your location" %}</div>
+                <div class="input-box">
+                    <label for="so2">SO2</label>
+                    {{form.so2}}
+                </div>
+                <div class="input-box">
+                    <label for="o3">O3</label>
+                    {{form.o3}}
+                </div>
+                <div class="input-box">
+                    <label for="pm2_5">PM2.5</label>
+                    {{form.pm2_5}}
+                </div>
+                <div class="input-box">
+                    <label for="pm10">PM10</label>
+                    {{form.pm10}}
+                </div>
+                <div class="btn">
+                    <input type="button" value="Submit" >
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 {% endblock %}
