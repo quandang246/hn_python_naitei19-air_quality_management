@@ -2,7 +2,7 @@ from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.views import PasswordChangeView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -240,3 +240,13 @@ def report_air_quality(request):
         form = AirQualityForm_User()
 
     return render(request, 'user/user_aqi_form_create.html', {'form': form})
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'registration/password_reset.html'
+    email_template_name = 'registration/password_reset_mail.html'
+    subject_template_name = 'registration/password_reset_subject'
+    success_message = _("We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder.")
+    success_url = reverse_lazy('login')
