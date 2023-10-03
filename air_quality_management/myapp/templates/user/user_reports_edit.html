@@ -1,0 +1,46 @@
+{% extends 'base_user_form.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block title%}{% trans "Report View" %}{% endblock title %}
+{% block content %}
+<div class="container">
+    <link rel="stylesheet" href="{% static 'css/report_view.css' %}" />
+    <form method="post">
+        {% csrf_token %}
+        <div class="content">
+            <div class="left-side">
+                <div id="map" class="map"></div>
+                <input type="hidden" id="location" name="location" required>
+                <input type="hidden" id="latitude" name="latitude" required>
+                <input type="hidden" id="longitude" name="longitude" required>
+                <script src="{% static 'js/cdn.jsdelivr.net_npm_leaflet@1.7.1_dist_leaflet.js' %}"></script>
+                <script src="{% static 'js/user_report_map.js' %}"></script>
+            </div>
+            <div class="right-side">
+                <div class="topic-text">{% trans "Input the AQI data from your location" %}</div>
+                <label for="so2">{% trans "SO2" %}</label>
+                <div class="input-box">
+                    {{form.so2}}
+                </div>
+                <label for="o3">{% trans "O3" %}</label>
+                <div class="input-box">
+                    {{form.o3}}
+                </div>
+                <label for="pm2_5">{% trans "PM2.5" %}</label>
+                <div class="input-box">
+                    {{form.pm2_5}}
+                </div>
+                <label for="pm10">{% trans "PM10" %}</label>
+                <div class="input-box">
+                    {{form.pm10}}
+                </div>
+                <div class="btn">
+                    <input type="submit" value="Update" >
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
