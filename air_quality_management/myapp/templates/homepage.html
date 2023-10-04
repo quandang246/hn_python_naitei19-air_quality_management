@@ -5,16 +5,15 @@
 {% block title %}{% trans "Homepage - Air Quality Data" %}{% endblock %}
 
 {% block content %}
-    <!-- Chart place -->
+<!--
     <div id="myChart" style="max-width: 700px; height: 400px; margin: 0 auto;"></div>
 
-    <!-- Table place -->
     <div class="container-1">
-        <h1 style="color: white; padding: 0 0 20px 0;">{% trans "AIR QUALITY MANAGEMENT FOR CITIES" %}</h1>
+        <h1 style="color: black; padding: 0 0 20px 0;">{% trans "AIR QUALITY MANAGEMENT FOR CITIES" %}</h1>
         <input type="text" id="searchInput" placeholder="{% trans 'Search for locations...' %}">
         <table id="dataTable">
             <thead>
-                <tr >
+                <tr>
                     <th>{% trans "Location" %}</th>
                     <th>{% trans "Air Quality Index" %}</th>
                     <th>{% trans "Timestamp" %}</th>
@@ -39,5 +38,44 @@
     </div>
     <script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
-    <script src="{% static 'js/chart.js' %}"></script>      
+    <script src="{% static 'js/chart.js' %}"></script>
+-->
+<div class="dashboard">
+    <div class="taskbar">
+        <li><a href="#">{% trans "All cities" %}</a></li>
+        <li><a href="#">{% trans "Graph A" %}</a></li>
+        <li><a href="#">{% trans "Graph B" %}</a></li>
+        <li><a href="#">{% trans "Graph C" %}</a></li>
+    </div>
+    <div class="right-side">
+        <h1>{% trans "AIR QUALITY MANAGEMENT FOR CITIES" %}</h1>
+        <input type="text" id="searchInput" placeholder="{% trans 'Search for locations...' %}">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>{% trans "Location" %}</th>
+                    <th>{% trans "Air Quality Index" %}</th>
+                    <th>{% trans "Timestamp" %}</th>
+                    <th>{% trans "Main Pollutant" %}</th>
+                    <th>{% trans "Pollution Level" %}</th>
+                    <th>{% trans "Details" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in data %}
+                    <tr>
+                        <td>{{ entry.city }}</td>
+                        <td>{{ entry.air_quality_index }}</td>
+                        <td>{{ entry.timestamp }}</td>
+                        <td>{{ entry.main_pollutant }}</td>
+                        <td>{{ entry.pol_level }}</td>
+                        <td><a href="{% url 'city_details' pollutant_id=entry.pollutant_id.id %}">{% trans "View Details" %}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
 {% endblock %}
