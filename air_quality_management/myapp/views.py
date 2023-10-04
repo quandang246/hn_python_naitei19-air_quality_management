@@ -324,3 +324,9 @@ def delete_reports(request, data_id):
     else:
         air_quality_data.delete()
         return redirect(to='users-profile')
+
+
+def request_pollutant(request):
+    pollutant = Pollutant.objects.all()
+    return render(request, 'homepage.html', {'pollutant': pollutant})
+

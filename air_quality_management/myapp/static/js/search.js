@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#searchInput').on('input', function () {
+    $('#searchbar').on('input', function () {
         // Get the search input value
         var searchValue = $(this).val().toLowerCase();
 
