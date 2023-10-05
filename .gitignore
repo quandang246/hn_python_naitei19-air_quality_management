@@ -159,5 +159,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-#local user picture
-media/profile_images/*
+air_quality_management/media/profile_images/*.jpg
+air_quality_management/myapp/templates/.idea

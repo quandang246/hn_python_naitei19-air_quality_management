@@ -1,0 +1,26 @@
+{% load i18n %}
+{% load static %}
+{% load sweetify %}
+{% sweetify %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load i18n %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/user_form.css' %}" />
+    <link rel="stylesheet" href="{% static 'leaflet/leaflet.css' %}" />
+    <script src="{% static 'leaflet/leaflet.js' %}"></script>
+    <script src="{% static 'js/unpkg.com_sweetalert@2.1.2_dist_sweetalert.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/cdn.jsdelivr.net_npm_sweetalert2@7.12.15_dist_sweetalert2.min.css' %}"/>
+    <title>
+        {% block title %} {% endblock title %}
+    </title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
