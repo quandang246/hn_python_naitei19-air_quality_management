@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
-from .views import profile, edit_profile
+from .views import profile, edit_profile, report_view, edit_reports, delete_reports
 from .views import ChangePasswordView, ResetPasswordView
 
 urlpatterns = [
@@ -22,4 +22,7 @@ urlpatterns = [
     path('report_air_quality', views.report_air_quality, name='report_air_quality'),
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirmation.html'), name='password_reset_confirm'),
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_completed.html'), name='password_reset_complete'),
+    path('reports-view/<uuid:data_id>/', report_view, name='report_view'),
+    path('reports-edit/<uuid:data_id>/', edit_reports, name='edit_reports'),
+    path('reports-delete/<uuid:data_id>/', delete_reports, name='delete_reports'),
 ]

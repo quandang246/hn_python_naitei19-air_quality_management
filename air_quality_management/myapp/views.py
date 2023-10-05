@@ -13,7 +13,7 @@ from django.views import View
 from django.db import transaction
 from .models import AirQualityData, Pollutant, Sensor
 from .forms import LoginForm, RegisterForm
-from .forms import UpdateUserForm, UpdateProfileForm
+from .forms import UpdateUserForm, UpdateProfileForm, UpdateReportForm
 from .forms import AirQualityForm_User
 
 
@@ -193,19 +193,25 @@ def _pollution_level(air_quality_index):
     elif air_quality_index > 200:
         return _("Hazardous")
 
+# Pollution level calculation
+SO2STANDARD = 0.25
+O3STANDARD = 0.065
+PM2_5STANDARD = 25
+PM10STANDARD = 50
 
 @login_required
 def report_air_quality(request):
     if request.method == 'POST':
         form = AirQualityForm_User(request.POST)
         if form.is_valid():
-            city = form.cleaned_data['location']
-            latitude = form.cleaned_data['latitude']
-            longitude = form.cleaned_data['longitude']
-            so2 = form.cleaned_data['so2']
-            o3 = form.cleaned_data['o3']
-            pm2_5 = form.cleaned_data['pm2_5']
-            pm10 = form.cleaned_data['pm10']
+            params = form.cleaned_data
+            so2 = params.get('so2')
+            o3 = params.get('o3')
+            pm2_5 = params.get('pm2_5')
+            pm10 = params.get('pm10')
+            city = params.get('location')
+            latitude = params.get('latitude')
+            longitude = params.get('longitude')
 
             with transaction.atomic():
                 # Save pollutant to database
@@ -214,12 +220,6 @@ def report_air_quality(request):
 
                 # Get primary key
                 pol_id = pollutant_obj
-
-                # Pollution level calculation
-                SO2STANDARD = 0.25
-                O3STANDARD = 0.065
-                PM2_5STANDARD = 25
-                PM10STANDARD = 50
 
                 so2_aqi = so2 * 100 / SO2STANDARD  # Input for 8h period - Standard 0.25pmm
                 o3_aqi = o3 * 100 / O3STANDARD  # Input for 8h period - Standard 0.065pmm
@@ -250,3 +250,77 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       " If you don't receive an email, " \
                       "please make sure you've entered the address you registered with, and check your spam folder.")
     success_url = reverse_lazy('login')
+
+@login_required
+def report_view(request, data_id, *args, **kwargs):
+    try:
+        air_quality_data = AirQualityData.objects.get(provider=request.user.username, data_id=data_id)
+    except AirQualityData.DoesNotExists:
+        messages.error(request, _('Record doesn not exist.'))
+    else:
+        context = {
+            'air_quality_data': air_quality_data,
+        }
+        return render(request, 'user/user_reports_view.html', context)
+
+@login_required
+def edit_reports(request, data_id):
+    if request.method == 'POST':
+        form = UpdateReportForm(request.POST)
+        if form.is_valid():
+            params = form.cleaned_data
+            so2 = params.get('so2')
+            o3 = params.get('o3')
+            pm2_5 = params.get('pm2_5')
+            pm10 = params.get('pm10')
+            city = params.get('location')
+            latitude = params.get('latitude')
+            longitude = params.get('longitude')
+
+            with transaction.atomic():
+                pollutant_obj = Pollutant(SO2=so2, O3=o3, PM2_5=pm2_5, PM10=pm10)
+                pollutant_obj.save()
+
+                # Get primary key
+                pol_id = pollutant_obj
+
+                try:
+                    air_quality_data = AirQualityData.objects.get(provider=request.user.username, data_id=data_id)
+                except AirQualityData.DoesNotExists:
+                    messages.error(request, _('Record doesn not exist.'))
+                else:
+                    air_quality_data.pollutant_id.SO2 = so2
+                    air_quality_data.pollutant_id.O3 = o3
+                    air_quality_data.pollutant_id.PM2_5 = pm2_5
+                    air_quality_data.pollutant_id.PM10 = pm10
+
+                    so2_aqi = so2 * 100 / SO2STANDARD  # Input for 8h period - Standard 0.25pmm
+                    o3_aqi = o3 * 100 / O3STANDARD  # Input for 8h period - Standard 0.065pmm
+                    pm2_5_aqi = pm2_5 * 100 / PM2_5STANDARD  # Input for 24h period - Standard 25ug/m3
+                    pm10_aqi = pm10 * 100 / PM10STANDARD  # Input for 24h period - Standard 50ug/m3
+                    main_pol = {so2_aqi: "SO2", o3_aqi: "O3", pm2_5_aqi: "PM2.5", pm10_aqi: "PM10"}
+                    air_quality_data.air_quality_index = max(so2_aqi, o3_aqi, pm2_5_aqi, pm10_aqi)
+                    air_quality_data.pollutant_id=pol_id
+                    air_quality_data.main_pollutant=main_pol.get(max(main_pol))
+                    air_quality_data.pol_level=_pollution_level(air_quality_data.air_quality_index)
+                    air_quality_data.city=city
+                    air_quality_data.latitude=latitude
+                    air_quality_data.longitude=longitude
+
+                    air_quality_data.save()
+                    messages.success(request, _('Your report is updated successfully'))
+                    return redirect(to='users-profile')
+    else:
+        form = UpdateReportForm()
+
+    return render(request, 'user/user_reports_edit.html', {'form': form})
+
+@login_required
+def delete_reports(request, data_id):
+    try:
+        air_quality_data = AirQualityData.objects.get(provider=request.user.username, data_id=data_id)
+    except AirQualityData.DoesNotExists:
+        messages.error(request, _('Record doesn not exist.'))
+    else:
+        air_quality_data.delete()
+        return redirect(to='users-profile')

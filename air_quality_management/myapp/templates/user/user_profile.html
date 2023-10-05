@@ -62,11 +62,11 @@
                                 <td>{{ entry.pol_level }}</td>
                                 <td>
                                 <!--replace "#" with "% url 'view_report' report_id=1 %"-->
-                                <a href="{#}" class="btn btn-info btn-sm">{% trans "View" %}</a>
+                                <a href="{% url 'report_view' data_id=entry.data_id %}" class="btn btn-info btn-sm">{% trans "View" %}</a>
                                 <!--replace "#" with "% url 'edit_report' report_id=1 %"-->
-                                <a href="{#}" class="btn btn-warning btn-sm">{% trans "Edit" %}</a>
+                                <a href="{% url 'edit_reports' data_id=entry.data_id %}" class="btn btn-warning btn-sm">{% trans "Edit" %}</a>
                                 <!--replace "#" with "% url 'delete_report' report_id=1 %"-->
-                                <a href="{#}" class="btn btn-danger btn-sm">{% trans "Delete" %}</a>
+                                <a href="{% url 'delete_reports' data_id=entry.data_id %}" class="btn btn-danger btn-sm">{% trans "Delete" %}</a>
                                 </td>
                             </tr>
                         {% endfor %}

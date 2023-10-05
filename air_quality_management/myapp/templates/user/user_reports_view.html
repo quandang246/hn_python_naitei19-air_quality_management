@@ -1,0 +1,61 @@
+{% extends 'base_reports_view.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block title%}{% trans "Report Details" %}{% endblock title %}
+{% block content %}
+
+<div class="container">
+    <h1>{% trans "Reports Details" %}</h1>
+    <div class="content">
+        <div class="left-side">
+            <div class="topic-text">
+                <div class="form-group">
+                    <label for="name">{% trans "City:" %}</label>
+                    {{air_quality_data.city}}
+                </div>
+                <div class="form-group">
+                    <label for="timestamp">{% trans "Time:" %}</label>
+                    {{air_quality_data.timestamp}}
+                </div>
+                <div class="form-group">
+                    <label for="aqi">{% trans "Air Quality Index:" %}</label>
+                    {{air_quality_data.air_quality_index}}
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="topic-text">
+                <div class="form-group">
+                    <label for="pol_level">{% trans "Polution Level:" %}</label>
+                    {{air_quality_data.pol_level}}
+                </div>
+                <div class="form-group">
+                    <label for="so2">{% trans "SO2:" %}</label>
+                    {{air_quality_data.pollutant_id.SO2}}
+                </div>
+                <div class="form-group">
+                    <label for="o3">{% trans "O3:" %}</label>
+                    {{air_quality_data.pollutant_id.O3}}
+                </div>
+                <div class="form-group">
+                    <label for="pm2_5">{% trans "PM2.5:" %}</label>
+                    {{air_quality_data.pollutant_id.PM2_5}}
+                </div>
+                <div class="form-group">
+                    <label for="pm10">{% trans "PM10:" %}</label>
+                    {{air_quality_data.pollutant_id.PM10}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn">
+        <a  href="{% url 'edit_reports' data_id=air_quality_data.data_id %}" class="btn btn-primary"> {% trans "Edit" %} </a>
+    </div>
+    <div class="btn">
+        <a  href="{% url 'delete_reports' data_id=air_quality_data.data_id %}" class="btn btn-primary"> {% trans "Delete" %} </a>
+    </div>
+</div>
+
+{% endblock %}
