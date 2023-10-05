@@ -33,9 +33,9 @@
                     <td>{{ entry.pollutant_id.SO2 }}</td>
                     <td>{{ entry.pollutant_id.O3 }}</td>
                     <td>
-                        <a href="{#}">{% trans "Edit" %}</a>
+                        <a href="{% url 'report_view' data_id=entry.data_id %}">{% trans "Details" %}</a>
                         /
-                        <a href="{#}">{% trans "Delete" %}</a>
+                        <a href="{% url 'delete_reports' data_id=entry.data_id %}">{% trans "Delete" %}</a>
                     </td>
                 </tr>
             {% endfor %}

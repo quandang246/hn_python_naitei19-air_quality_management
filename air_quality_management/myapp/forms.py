@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext_lazy as _
-from .models import Profile
+from .models import Profile, AirQualityData
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -49,6 +49,15 @@ class UpdateProfileForm(forms.ModelForm):
 
 
 class AirQualityForm_User(forms.Form):
+    location = forms.CharField(label='Location', widget=forms.HiddenInput(), required=False)
+    latitude = forms.FloatField(label='Latitude', widget=forms.HiddenInput(), required=False)
+    longitude = forms.FloatField(label='Longitude', widget=forms.HiddenInput(), required=False)
+    so2 = forms.FloatField(label='SO2')
+    o3 = forms.FloatField(label='O3')
+    pm2_5 = forms.FloatField(label='PM2.5')
+    pm10 = forms.FloatField(label='PM10')
+
+class UpdateReportForm(forms.Form):
     location = forms.CharField(label='Location', widget=forms.HiddenInput(), required=False)
     latitude = forms.FloatField(label='Latitude', widget=forms.HiddenInput(), required=False)
     longitude = forms.FloatField(label='Longitude', widget=forms.HiddenInput(), required=False)
