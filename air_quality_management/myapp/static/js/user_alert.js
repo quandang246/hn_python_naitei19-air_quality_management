@@ -33,7 +33,7 @@ swal({
                 button:false,
                 timer: 4000,
             }).then(() => {
-                window.location.href = "profile";
+                window.location.href = "homepage";
             })
     }
 });

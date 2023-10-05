@@ -8,53 +8,56 @@
 }
 body{
   min-height: 100vh;
-  width: 100%;
+  width: 100vw;
   background: #c8e8e9;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .container{
+  height: 90%;
   width: 85%;
   background: #fff;
-  border-radius: 6px;
+  border-radius: 1rem;
   padding: 20px 60px 30px 40px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .container .content{
+  height: 80vh;
+  width: 80vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.container .content .left-side{
-  width: 40%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
-  position: relative;
 }
-.content .left-side::before{
-  content: '';
-  position: absolute;
-  height: 70%;
-  width: 2px;
-  right: -15px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #afafb6;
+.container .content .left-side{
+  width: 50%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-right: 3px solid #afafb6;
+}
+
+.left-side img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0 0 0;
+    width: 95%;
+    height: auto;
 }
 
 .container .content .right-side{
-  width: 60%;
-  margin-left: 75px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 4%;
 }
 .content .right-side .topic-text{
-  font-size: 23px;
+  margin-bottom: 30px;
+  font-size: 30px;
   font-weight: 600;
-  color: #3e2093;
+  color: #23ada8;
 }
 .right-side .input-box{
   height: 50px;
@@ -79,10 +82,11 @@ body{
 .right-side .input-box textarea{
   padding-top: 6px;
 }
+
 .right-side .btn{
-  display: inline-block;
-  margin-top: 12px;
+    padding-top: 20px;
 }
+
 .right-side .btn input[type="submit"]{
   color: #fff;
   font-size: 20px;
@@ -90,44 +94,29 @@ body{
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  background: #3e2093;
+  background: #23ada8;
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .btn input[type="submit"]:hover{
   background: #5029bc;
 }
 
-@media (max-width: 950px) {
-  .container{
-    width: 90%;
-    padding: 30px 40px 40px 35px ;
-  }
-  .container .content .right-side{
-   width: 75%;
-   margin-left: 55px;
+.right-side .btn .cancel{
+    color: #0081a9;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    margin-left: 20px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #f0f1f8;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-}
-@media (max-width: 820px) {
-  .container{
-    margin: 40px 0;
-    height: 100%;
-  }
-  .container .content{
-    flex-direction: column-reverse;
-  }
- .container .content .left-side{
-   width: 100%;
-   flex-direction: row;
-   margin-top: 40px;
-   justify-content: center;
-   flex-wrap: wrap;
- }
- .container .content .left-side::before{
-   display: none;
- }
- .container .content .right-side{
-   width: 100%;
-   margin-left: 0;
- }
+
+.btn .cancel:hover{
+    color: #ffffff;
+    background: #a0a1aa;
 }
