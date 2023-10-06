@@ -114,6 +114,7 @@ main {
 
 /* Style the table (you can modify this to fit your needs) */
 table {
+  overflow: scroll;
   border-collapse: collapse;
   width: 80%; /* Adjust the width as needed */
 }
@@ -134,7 +135,7 @@ th {
 
 tr:hover {background-color: coral;}
 
-.city-detals {
+.city-details {
   height: 100vh;
   background-position: center;
   background-size: cover;
@@ -161,7 +162,7 @@ tr:hover {background-color: coral;}
 
 h1 {
     color: #00bd9a;
-    padding: 0 0 20px 0;
+    padding: 30px 0 50px 0;
 }
 
 .dashboard{
@@ -190,11 +191,39 @@ h1 {
     align-items: center;
 }
 
-
 .dashboard .right-side{
+    overflow: scroll;
     flex: 85%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.right-side .searchbar{
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    width: 60%;
+    height: 5%;
+}
+
+.dashboard .right-side .heading-graph{
+    display: none;
+}
+
+.dashboard .taskbar .btn-cities{
+    width: 90%;
+    padding: 20px 30px;
+    background: #d4e8fd;
+    border-radius: 1.5rem;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+}
+
+.dashboard .taskbar .btn-graph-all{
+    padding: 20px 30px;
+    background: #d4e8fd;
+    border-radius: 1.5rem;
+    font-size: 20px;
+    margin: 0 0 20px 0;
 }

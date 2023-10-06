@@ -37,7 +37,7 @@ class Pollutant(models.Model):
     PM10 = models.DecimalField(max_digits=18, decimal_places=4)
 
     def __str__(self):
-        return f"Pollutant: SO2={self.SO2}, O3={self.O3}, PM10={self.PM10}"
+        return f"Pollutant: SO2={self.SO2}, O3={self.O3}, PM2_5={self.PM2_5}, PM10={self.PM10}"
 
 
 class Sensor(models.Model):
